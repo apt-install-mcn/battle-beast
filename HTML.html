@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Battle Beasts</title>
+    <link rel="stylesheet" type="text/css" href="./css/battle-beast.css">
+    <style>
+        body {
+            background-image: url(./assets/background.png);
+            background-size: cover;
+        }
+    </style>
+</head>
+<body >
+    <section id="seleccionar-mascota">
+        <h1 class="title">  Battle Beasts  </h1>
+
+        <h2 class="Subtitulo">Choose your Beast</h2>
+
+        <div class="tarjetas">
+            <label class="tarjeta-de-pokemon" for="Chapultepec">
+                <p>Chapultepec</p>
+                <img src="./assets/Chapultepec1.png" alt="Chapultepec">
+            </label>
+            <input type="radio" name="mascota" id="Chapultepec">
+    
+            <label class="tarjeta-de-pokemon2" for="Crinoxlo">
+                <p>Crinoxlo</p>
+                <img src="./assets/Crinoxlo.png" alt="Crinoxlo">
+            </label>
+            <input type="radio" name="mascota" id="Crinoxlo">
+    
+            <label class="tarjeta-de-pokemon3" for="Fungionixto">
+                <p>Fungionixto</p>
+                <img src="./assets/Fungionixto.png"  alt="Fungionixto">
+            </label>
+            <input type="radio" name="mascota" id="Fungionixto">
+            <label class="tarjeta-de-pokemon4" for="Doblextolio">
+                <p>Doblextolio</p>
+                <img src="./assets/Doblextolio.png" alt="Doblextolio">
+            </label>
+            <input type="radio" name="mascota" id="Doblextolio">
+    
+            <label class="tarjeta-de-pokemon5" for="Tricalno">
+                <p>Tricalno</p>
+                <img src="./assets/Tricalno.png" alt="Tricalno">
+
+            </label>
+            <input type="radio" name="mascota" id="Tricalno">
+
+        </div>
+
+
+
+
+
+        <button class="boton-mascota" id="boton-mascota">Selecionar</button>
+    </section>
+
+<section id="seleccionar-ataque">
+    <h1 class="title1">  Battle Beats  </h1>
+
+    <h2>Elige tu ataque:</h2>
+
+    <div>
+        <button id="boton-fuego"> Fuego </button>
+        <button id="boton-agua">Agua</button>
+        <button id="boton-tierra">Tierra</button>
+    </div>
+
+    <div>
+        <section id="mensajes">
+        </section>
+        <section id="reiniciar">
+            <button id="boton-reiniciar">reiniciar</button>
+        </section>
+    </div>
+
+    <div>
+        <p>Tu mascota<span id="mascota-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas </p>
+        <p>La mascota<span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas </p>
+    </div>
+    
+    </section>
+    <script src="./js/battle-beast.js"></script>
+
+    </body>
+</html>

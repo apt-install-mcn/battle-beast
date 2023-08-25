@@ -1,0 +1,256 @@
+
+
+body {
+
+    font-family: 'Comfortaa', cursive;
+    background-image: url(./assets/background.png);   
+    background-size: cover;
+    background-position: center;
+ 
+}
+
+
+.title {
+    color: #00235B;
+    width: 210px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #E21818 ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Comfortaa', cursive;
+    font-size: 30px;
+
+}
+
+.Subtitulo {
+    color: #E21818;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #FFDD83;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+
+}
+
+#seleccionar-mascota {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.tarjetas {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.tarjeta-de-pokemon {
+    
+    width: 100px;
+    height: 140px;
+    background-color: green;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.tarjeta-de-pokemon img {
+
+    width: 80px;
+    margin: -20px;
+
+
+}
+
+.tarjeta-de-pokemon2 {
+    
+    width: 100px;
+    height: 140px;
+    background-color: yellow;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+
+}
+
+.tarjeta-de-pokemon2 img {
+
+    width: 55px;
+    margin: -15px;
+
+}
+
+.tarjeta-de-pokemon3 {
+    
+    width: 100px;
+    height: 140px;
+    background-color: red;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+
+}
+
+.tarjeta-de-pokemon3 img {
+
+    width: 80px;
+    margin: -10px;
+
+}
+
+
+.tarjeta-de-pokemon4 {
+    
+    width: 100px;
+    height: 140px;
+    background-color: violet;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+
+}
+
+.tarjeta-de-pokemon4 img {
+
+    width: 70px;
+    margin: -10px;
+
+}
+
+
+.tarjeta-de-pokemon5 {
+    
+    width: 100px;
+    height: 140px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    background-color: greenyellow;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+
+}
+
+.tarjeta-de-pokemon5 img {
+
+    width: 78px;
+    margin: -10px;
+
+}
+
+input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    background-color: blueviolet;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.boton-mascota {
+    width: 100px;
+    height: 40px;
+    background-color: blueviolet;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Comfortaa', cursive;
+
+}
+
+#seleccionar-ataque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.title1 {
+    color: #00235B;
+    width: 210px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #E21818 ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Comfortaa', cursive;
+    font-size: 30px;
+
+}
+
+#Chapultepec {
+    visibility: hidden
+}
+#Crinoxlo {
+    visibility: hidden
+}
+#Fungionixto {
+    visibility: hidden
+}
+#Doblextolio {
+    visibility: hidden
+}
+#Tricalno {
+    visibility: hidden
+}
