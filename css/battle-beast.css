@@ -254,3 +254,32 @@ input[type="radio"] {
 #Tricalno {
     visibility: hidden
 }
+
+#mensajes {
+    
+    background-color: blueviolet;
+    width: 280px;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    flex-direction: column;
+
+}
+
+#boton-reiniciar {
+
+border: none;
+color: #000;
+font-family: 'Comfortaa', cursive;
+background-color: blueviolet;
+display: flex;
+
+}
+
+.ataques {
+    display: grid;
+}
