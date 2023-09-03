@@ -2,6 +2,9 @@ let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
+let ataqueJugador1 = document.getElementById('ataque-jugador-1');
+let ataqueJugador2 = document.getElementById('ataque-jugador-2');
+
  
 function ininciarJuego(){
 
@@ -114,7 +117,7 @@ function combate() {
 
 
         let spanVidasJugador = document.getElementById('vidas-jugador')
-        let spanVidasEnermigo = document.getElementById('vidas-enemigo')
+        let spanVidasEnemigo = document.getElementById('vidas-enemigo')
 
             
         if (ataqueEnemigo == ataqueJugador) {
@@ -122,16 +125,16 @@ function combate() {
           } else if (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
             crearMensaje("GANASTE")
             vidasEnemigo--
-            spanVidasEnermigo.innerHTML = vidasEnemigo
+            spanVidasEnemigo.innerHTML = vidasEnemigo
 
           } else if (ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO') { 
             crearMensaje("GANASTE")
             vidasEnemigo--
-            spanVidasEnermigo.innerHTML = vidasEnemigo
+            spanVidasEnemigo.innerHTML = vidasEnemigo
           } else if(ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA') {
             crearMensaje("GANASTE")
             vidasEnemigo--
-            spanVidasEnermigo.innerHTML = vidasEnemigo
+            spanVidasEnemigo.innerHTML = vidasEnemigo
           } else { 
             crearMensaje("PERDISTE")
             vidasJugador--
@@ -162,9 +165,9 @@ function crearMensaje(resultado) {
     let nuevoAtaqueJugador1 = document.createElement('p');
     let nuevoAtaqueJugador2 = document.createElement('p');
 
-    sectionMensajes.innerHTML = resultado;
-    nuevoAtaqueJugador1.textContent = "Tu ataque: " + ataqueJugador; 
-    nuevoAtaqueJugador2.textContent = "Ataque enemigo: " + ataqueEnemigo; 
+    sectionMensajes.textContent = resultado;
+    nuevoAtaqueJugador1.textContent = "Tu ataque: " + ataqueJugador;
+    nuevoAtaqueJugador2.textContent = "Ataque enemigo: " + ataqueEnemigo;
 
     ataqueJugador1.appendChild(nuevoAtaqueJugador1);
     ataqueJugador2.appendChild(nuevoAtaqueJugador2);
