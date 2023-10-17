@@ -1,52 +1,86 @@
+const sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+const sectionSeleccionarReiniciar = document.getElementById('reiniciar')
+const botonMascotaJugador = document.getElementById('boton-mascota')
+const botonAgua = document.getElementById('boton-agua')
+const botonTierra = document.getElementById('boton-tierra')
+sectionSeleccionarReiniciar.style.display = 'none'
+const botonFuego = document.getElementById('boton-fuego')
+const botonReiniciar = document.getElementById("boton-reiniciar")
+
+
+const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+const inputChapultepec = document.getElementById('Chapultepec')
+const inputCrinoxlo = document.getElementById('Crinoxlo')
+const inputFungionixto = document.getElementById('Fungionixto')
+const inputDoblextolio = document.getElementById('Doblextolio')
+const inputTricalno = document.getElementById('Tricalno')
+
+
+const spanMascotaJugador = document.getElementById('mascota-jugador')
+
+
+const spanVidasJugador = document.getElementById('vidas-jugador')
+const spanVidasEnemigo = document.getElementById('vidas-enemigo')
+
+
+const sectionMensajes = document.getElementById('resultado');
+const ataqueJugador1 = document.getElementById('ataque-jugador-1');
+const ataqueJugador2 = document.getElementById('ataque-jugador-2');
+
+
 let ataqueJugador
 let ataqueEnemigo
 let vidasJugador = 3
 let vidasEnemigo = 3
-let ataqueJugador1 = document.getElementById('ataque-jugador-1');
-let ataqueJugador2 = document.getElementById('ataque-jugador-2');
 
- 
+class Beast {
+    constructor(nombre, foto, vida) {
+        this.nombre = nombre
+        this.foto = foto
+        this.vida = vida
+    }
+}
+
+let Chapultepec = new Beast('Chapultepec', './assets/Chapultepec1.png', 5)
+
+let Crinoxlo = new Beast('Crinoxlo', './assets/Crinoxlo.png', 5)
+
+let Fungionixto = new Beast('Fungionixto', './assets/Fungionixto.png', 5)
+
+let Doblextolio = new Beast('Dobletolio', './assets/Doblextolio.png', 5)
+
+let Tricalno = new Beast('Tricalno', './assets/Tricalno.png', 5)
+
+console.log(Chapultepec)
+
 function ininciarJuego(){
 
-    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+    
     sectionSeleccionarAtaque.style.display = 'none'
 
-    let sectionSeleccionarReiniciar = document.getElementById('reiniciar')
-    sectionSeleccionarReiniciar.style.display = 'none'
-
-
-    let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click', selecionarMascotaJugador)
 
-    let botonFuego = document.getElementById('boton-fuego')
             botonFuego.addEventListener('click', ataqueFuego)
 
-    let botonAgua = document.getElementById('boton-agua')
             botonAgua.addEventListener('click', ataqueAgua)
 
-    let botonTierra = document.getElementById('boton-tierra')
+    
             botonTierra.addEventListener('click', ataqueTierra)
 
 
-    let botonReiniciar = document.getElementById("boton-reiniciar")
+    
     botonReiniciar.addEventListener("click", reiniciarJuego)
 
 }
 
 function selecionarMascotaJugador(){
 
-    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
     sectionSeleccionarMascota.style.display = 'none'
 
-    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque')
+
     sectionSeleccionarAtaque.style.display = 'flex'
 
-    let inputChapultepec = document.getElementById('Chapultepec')
-    let inputCrinoxlo = document.getElementById('Crinoxlo')
-    let inputFungionixto = document.getElementById('Fungionixto')
-    let inputDoblextolio = document.getElementById('Doblextolio')
-    let inputTricalno = document.getElementById('Tricalno')
-    let spanMascotaJugador = document.getElementById('mascota-jugador')
+
 
     if(inputChapultepec.checked){
         spanMascotaJugador.innerHTML = 'Chapultepec'
@@ -116,8 +150,7 @@ function ataqueAleatorioEnemigo(){
 function combate() {
 
 
-        let spanVidasJugador = document.getElementById('vidas-jugador')
-        let spanVidasEnemigo = document.getElementById('vidas-enemigo')
+
 
             
         if (ataqueEnemigo == ataqueJugador) {
@@ -158,9 +191,6 @@ function revisarVidas(){
 
 
 function crearMensaje(resultado) {
-    let sectionMensajes = document.getElementById('resultado');
-    let ataqueJugador1 = document.getElementById('ataque-jugador-1');
-    let ataqueJugador2 = document.getElementById('ataque-jugador-2');
 
     let nuevoAtaqueJugador1 = document.createElement('p');
     let nuevoAtaqueJugador2 = document.createElement('p');
@@ -175,21 +205,20 @@ function crearMensaje(resultado) {
 }
 
 function crearMensajeFinal(resultadoFinal) {
-    let sectionMensajes = document.getElementById('resultado')
 
     sectionMensajes.innerHTML = resultadoFinal
     
 
 
-    let botonFuego = document.getElementById('boton-fuego')
+
     botonFuego.disabled = true
-    let botonAgua = document.getElementById('boton-agua')
+
     botonAgua.disabled = true
-    let botonTierra = document.getElementById('boton-tierra')
+
     botonTierra.disabled = true
 
 
-    let sectionSeleccionarReiniciar = document.getElementById('reiniciar')
+
     sectionSeleccionarReiniciar.style.display = 'block'
 
 }
