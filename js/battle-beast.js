@@ -18,6 +18,9 @@ const ataqueJugador2 = document.getElementById('ataque-jugador-2');
 const contenedorTarjetas = document.getElementById('contenedorTarjetas');
 const contendorAtaques = document.getElementById('contenedorAtaques');
 
+const sectionVerMapa = document.getElementById('ver-mapa');
+const mapa = document.getElementById('mapa');
+
 let beasts = []
 let ataqueJugador = []
 let ataqueEnemigo = []
@@ -28,6 +31,7 @@ let inputFungionixto
 let inputDoblextolio
 let inputTricalno
 let mascotaJugador
+let mascotaJugadorObjeto
 let ataquesBeast 
 let ataquesBeastEnemigo
 let botonFuego
@@ -40,28 +44,80 @@ let victoriasJugador = 0
 let victoriasEnemigo = 0 
 let vidasJugador = 3
 let vidasEnemigo = 3
+let lienzo = mapa.getContext("2d")
+let intervalo
+let mapaBackground = new Image();
+mapaBackground.src = "/assets/mapa.jpg"
+let altoMapa
+let anchoMapa = window.innerWidth - 20
+const anchoMaxMapa = 1080
+
+if (anchoMapa > anchoMaxMapa) {
+    anchoMapa = anchoMaxMapa -20
+}
+
+altoMapa = (anchoMapa * 600) / 800
+
+mapa.width = anchoMapa
+mapa.height = altoMapa
 
 class Beast {
-    constructor(nombre, foto, estilo, vida) {
+    constructor(nombre, foto, estilo, vida, fotoMapa) {
         this.nombre = nombre
         this.foto = foto
         this.estilo = estilo
         this.vida = vida
         this.ataques = []
+        this.ancho = 60
+        this.alto = 60
+        this.x = aleatorio(0, mapa.width - this.ancho)
+        this.y = aleatorio(0, mapa.height - this.alto)
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = fotoMapa
+        this.velocidadX = 0
+        this.velocidadY = 0
+    }
+
+    pintarBeast(){
+        lienzo.drawImage(
+            this.mapaFoto,
+            this.x,
+            this.y,
+            this.ancho,
+            this.alto
+        )
     }
 }
 
-let Chapultepec = new Beast('Chapultepec', './assets/Chapultepec1.png', 'tarjeta-de-pokemon', 5)
+let Chapultepec = new Beast('Chapultepec', './assets/Chapultepec1.png', 'tarjeta-de-pokemon', 5, "/assets/cabeza-Chapultepec.png")
 
-let Crinoxlo = new Beast('Crinoxlo', './assets/Crinoxlo.png', 'tarjeta-de-pokemon2', 5)
+let Crinoxlo = new Beast('Crinoxlo', './assets/Crinoxlo.png', 'tarjeta-de-pokemon2', 5, "/assets/cabeza-Crinoxlo.png")
 
-let Fungionixto = new Beast('Fungionixto', './assets/Fungionixto.png', 'tarjeta-de-pokemon3', 5)
+let Fungionixto = new Beast('Fungionixto', './assets/Fungionixto.png', 'tarjeta-de-pokemon3', 5, "/assets/cabeza-Fungionixto.png")
 
-let Doblextolio = new Beast('Doblextolio', './assets/Doblextolio.png', 'tarjeta-de-pokemon4', 5)
+let Doblextolio = new Beast('Doblextolio', './assets/Doblextolio.png', 'tarjeta-de-pokemon4', 5, "/assets/cabeza-Doblextolio.png")
 
-let Tricalno = new Beast('Tricalno', './assets/Tricalno.png', 'tarjeta-de-pokemon5', 5)
+let Tricalno = new Beast('Tricalno', './assets/Tricalno.png', 'tarjeta-de-pokemon5', 5, "/assets/cabeza-Tricalno.png")
+
+let ChapultepecEnemigo = new Beast('Chapultepec', './assets/Chapultepec1.png', 'tarjeta-de-pokemon', 5, "/assets/cabeza-Chapultepec.png")
+
+let CrinoxloEnemigo = new Beast('Crinoxlo', './assets/Crinoxlo.png', 'tarjeta-de-pokemon2', 5, "/assets/cabeza-Crinoxlo.png")
+
+let FungionixtoEnemigo = new Beast('Fungionixto', './assets/Fungionixto.png', 'tarjeta-de-pokemon3', 5, "/assets/cabeza-Fungionixto.png")
+
+let DoblextolioEnemigo = new Beast('Doblextolio', './assets/Doblextolio.png', 'tarjeta-de-pokemon4', 5, "/assets/cabeza-Doblextolio.png")
+
+let TricalnoEnemigo = new Beast('Tricalno', './assets/Tricalno.png', 'tarjeta-de-pokemon5', 5, "/assets/cabeza-Tricalno.png")
 
 Chapultepec.ataques.push(
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '🌱', id: 'boton-tierra'},
+)
+
+ChapultepecEnemigo.ataques.push(
     { nombre: '💧', id: 'boton-agua'},
     { nombre: '💧', id: 'boton-agua'},
     { nombre: '💧', id: 'boton-agua'},
@@ -77,7 +133,23 @@ Crinoxlo.ataques.push(
     { nombre: '🌱', id: 'boton-tierra'},
 )
 
+CrinoxloEnemigo.ataques.push(
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '🌱', id: 'boton-tierra'},
+    { nombre: '🌱', id: 'boton-tierra'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '🌱', id: 'boton-tierra'},
+)
+
 Fungionixto.ataques.push(
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '🌱', id: 'boton-tierra'},
+)
+
+FungionixtoEnemigo.ataques.push(
     { nombre: '🔥', id: 'boton-fuego'},
     { nombre: '🔥', id: 'boton-fuego'},
     { nombre: '💧', id: 'boton-agua'},
@@ -93,7 +165,23 @@ Doblextolio.ataques.push(
     { nombre: '🌱', id: 'boton-tierra'},
 )
 
+DoblextolioEnemigo.ataques.push(
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '🌱', id: 'boton-tierra'},
+)
+
 Tricalno.ataques.push(
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '💧', id: 'boton-agua'},
+    { nombre: '🔥', id: 'boton-fuego'},
+    { nombre: '🌱', id: 'boton-tierra'},
+    { nombre: '🌱', id: 'boton-tierra'},
+)
+
+TricalnoEnemigo.ataques.push(
     { nombre: '💧', id: 'boton-agua'},
     { nombre: '💧', id: 'boton-agua'},
     { nombre: '🔥', id: 'boton-fuego'},
@@ -106,6 +194,7 @@ beasts.push(Chapultepec, Crinoxlo, Fungionixto, Doblextolio, Tricalno)
 function ininciarJuego(){
  
     sectionSeleccionarAtaque.style.display = 'none'
+    sectionVerMapa.style.display = 'none' 
 
     beasts.forEach((beasts) => {
         opcionDeBeasts = `
@@ -131,7 +220,6 @@ function selecionarMascotaJugador(){
 
     sectionSeleccionarMascota.style.display = 'none'
 
-    sectionSeleccionarAtaque.style.display = 'flex'
 
     if(inputChapultepec.checked){
         spanMascotaJugador.innerHTML = inputChapultepec.id
@@ -152,7 +240,8 @@ function selecionarMascotaJugador(){
         alert('Debes seleccionar una mascota')
     }
     extraerAtaques(mascotaJugador)
-    selecionarMascotaEnemigo()
+    sectionVerMapa.style.display = 'flex'
+    iniciarMapa()
 }
 
 function extraerAtaques(mascotaJugador) {
@@ -182,7 +271,6 @@ function mostrarAtaques(ataques) {
 function secuenciaAtaque() {    
     botones.forEach((boton) => {
         boton.addEventListener('click', (e) => {
-            console.log(e)
             if (e.target.textContent === " 🔥 "){
                 ataqueJugador.push('FUEGO')
                 console.log(ataqueJugador)
@@ -204,15 +292,14 @@ function secuenciaAtaque() {
     })
 }
 
-function selecionarMascotaEnemigo() {
-    let mascotaAleatorio = aleatorio(0, beasts.length -1)
-
-    spanMascotaEnemigo.innerHTML = beasts[mascotaAleatorio].nombre
-    ataquesBeastEnemigo = beasts[mascotaAleatorio].ataques
+function selecionarMascotaEnemigo(enemigo) {
+    spanMascotaEnemigo.innerHTML = enemigo.nombre
+    ataquesBeastEnemigo = enemigo.ataques 
     secuenciaAtaque()
 }
 
 function ataqueAleatorioEnemigo(){
+    console.log("ataques enemigo", ataquesBeastEnemigo);
     let ataqueAleatorio = aleatorio(0,ataquesBeastEnemigo.length -1)
 
     if(ataqueAleatorio == 0 || ataqueAleatorio == 1) {
@@ -315,4 +402,123 @@ function reiniciarJuego(){
 function aleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min)
 } 
+
+function pintarCanvas() {
+
+    mascotaJugadorObjeto.x = mascotaJugadorObjeto.x + mascotaJugadorObjeto.velocidadX
+    mascotaJugadorObjeto.y = mascotaJugadorObjeto.y + mascotaJugadorObjeto.velocidadY
+    lienzo.clearRect(0, 0, mapa.width, mapa.height)
+    lienzo.drawImage(
+        mapaBackground,
+        0,
+        0,
+        mapa.width,
+        mapa.height
+    )
+        mascotaJugadorObjeto.pintarBeast()
+        ChapultepecEnemigo.pintarBeast()
+        CrinoxloEnemigo.pintarBeast()
+        FungionixtoEnemigo.pintarBeast()
+        DoblextolioEnemigo.pintarBeast()
+        TricalnoEnemigo.pintarBeast()
+        if (mascotaJugadorObjeto.velocidadX !== 0 ||
+            mascotaJugadorObjeto.velocidadY !== 0) { 
+                revisarColision(ChapultepecEnemigo)
+                revisarColision(CrinoxloEnemigo)
+                revisarColision(FungionixtoEnemigo)
+                revisarColision(DoblextolioEnemigo)
+                revisarColision(TricalnoEnemigo)
+        }
+}
+
+function moverArriba(){
+    mascotaJugadorObjeto.velocidadY = -5
+}
+
+function moverIzquierda(){
+    mascotaJugadorObjeto.velocidadX = -5
+}
+
+function moverAbajo(){
+    mascotaJugadorObjeto.velocidadY = 5
+}
+
+function moverDerecha(){
+    mascotaJugadorObjeto.velocidadX = 5
+}
+
+function detenerMovimiento(){
+    mascotaJugadorObjeto.velocidadX = 0
+    mascotaJugadorObjeto.velocidadY = 0
+}
+
+function sePresionaUnaTecla(event){ 
+    switch (event.key) {
+        case "ArrowUp":
+            moverArriba()
+            break
+        case "ArrowDown":
+            moverAbajo()
+            break
+        case "ArrowLeft":
+            moverIzquierda() 
+            break
+        case "ArrowRight":
+            moverDerecha()
+            break
+        default:
+            break
+    }
+}
+
+function iniciarMapa() {
+
+    mascotaJugadorObjeto = obtenerObjetoBeast(mascotaJugador)
+    intervalo = setInterval(pintarCanvas, 50)
+
+window.addEventListener('keydown', sePresionaUnaTecla)
+
+window.addEventListener('keyup', detenerMovimiento) 
+}
+
+function obtenerObjetoBeast() {
+    for (let i = 0; i < beasts.length; i++) {
+        if (mascotaJugador === beasts[i].nombre) {
+            return beasts[i];
+        }
+    }
+}
+
+function revisarColision(enemigo) {
+    const arribaEnemigo = enemigo.y
+    const abajoEnemigo = enemigo.y + enemigo.alto 
+    const derechaEnemigo = enemigo.x + enemigo.ancho
+    const izquierdaEnemigo = enemigo.x
+
+    const arribaBeast = 
+        mascotaJugadorObjeto.y
+    const abajoBeast = 
+        mascotaJugadorObjeto.y + mascotaJugadorObjeto.alto 
+    const derechaBeast = 
+        mascotaJugadorObjeto.x + mascotaJugadorObjeto.ancho
+    const izquierdaBeast = 
+        mascotaJugadorObjeto.x
+    
+    if(
+        abajoBeast < arribaEnemigo || 
+        arribaBeast > abajoEnemigo ||
+        derechaBeast < izquierdaEnemigo ||
+        izquierdaBeast > derechaEnemigo
+    
+     ) {
+        return
+     }
+     detenerMovimiento()
+     clearInterval(intervalo)
+     console.log("se dectecto una colision");
+     sectionSeleccionarAtaque.style.display = 'flex'
+     sectionVerMapa.style.display = 'none'
+     selecionarMascotaEnemigo(enemigo)
+}
+
 window.addEventListener('load', ininciarJuego)

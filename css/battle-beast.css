@@ -297,7 +297,7 @@ input:hover + label{
 }
 
 .boton-mascota:hover, #boton-fuego:hover, #boton-agua:hover, #boton-tierra:hover {
-    background-color: #FF6347; /* Slightly different color on hover */
+    background-color: #FF6347; 
     transform: scale(1.05); 
 }
 
@@ -308,9 +308,38 @@ input:hover + label{
     padding: 20px;
 }
 
+#ver-mapa {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#ver-mapa button {
+    width: 80px;
+    height: 40px;
+    background-color: #FF4500; /* Orange or thematic color */
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px 0;
+    border: 2px solid #FFD700; /* Gold border */
+    border-radius: 10px;
+    font-family: 'Comfortaa', cursive;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+
 @media (max-width: 768px) {
     .tarjetas {
 
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 300px) {
+    #Ver-mapa div {
+        display: flex;
+        align-items: center;
         flex-direction: column;
     }
 }
